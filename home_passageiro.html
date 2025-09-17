@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedir Mototáxi</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 {
+            color: #264653;
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .localizacao {
+            text-align: center;
+            color: #6c757d;
+            margin-bottom: 20px;
+        }
+        #mapaSimulado {
+            width: 100%;
+            height: 250px;
+            background-color: #e9ecef;
+            border-radius: 8px;
+            border: 1px solid #d4d8de;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+        input, button {
+            width: calc(100% - 20px);
+            padding: 12px 10px;
+            margin-bottom: 15px;
+            border: 1px solid #d4d8de;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        input:focus {
+            outline: none;
+            border-color: #2a9d8f;
+            box-shadow: 0 0 0 2px rgba(42, 157, 143, 0.2);
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        #verEstimativaBtn {
+            background-color: #2a9d8f;
+        }
+        #verEstimativaBtn:hover {
+            background-color: #264653;
+            transform: translateY(-2px);
+        }
+        #chamarMototaxiBtn {
+            background-color: #f4a261;
+            margin-top: 10px;
+        }
+        #chamarMototaxiBtn:hover {
+            background-color: #e76f51;
+            transform: translateY(-2px);
+        }
+        #estimativas {
+            text-align: center;
+            padding: 15px;
+            background-color: #eaf8f8;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+        }
+        #estimativas p {
+            margin: 5px 0;
+            color: #264653;
+        }
+        #estimativas strong {
+            color: #e76f51;
+        }
+        .links-area {
+            text-align: center;
+            margin-top: 30px;
+        }
+        a {
+            color: #457b9d;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 14px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .form-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d4d8de;
+        }
+        .form-section h2 {
+            color: #264653;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Onde você quer ir?</h1>
+        <p class="localizacao">Localização Atual: <strong><span id="localizacaoAtual">Carregando...</span></strong></p>
+        
+        <div id="mapaSimulado">
+            Simulação de Mapa
+        </div>
+        
+        <input type="text" id="destino" placeholder="Para onde?" required>
+        <button id="verEstimativaBtn">Ver Preço e Tempo</button>
+        
+        <div id="estimativas">
+            <p>Valor estimado: <strong><span id="valorEstimado">R$ 15,00</span></strong></p>
+            <p>Tempo de chegada: <strong><span id="tempoChegada">5 min</span></strong></p>
+            <button id="chamarMototaxiBtn">Chamar Mototáxi</button>
+        </div>
+        
+        <div class="form-section">
+            <h2>Método de Pagamento</h2>
+            <form id="cartaoForm">
+                <input type="text" id="numCartao" placeholder="Número do Cartão" required>
+                <input type="text" id="validadeCartao" placeholder="Validade (MM/AA)" required>
+                <button type="submit">Salvar Cartão</button>
+            </form>
+        </div>
+
+        <div class="links-area">
+            <a href="historico_passageiro.html">Histórico de Corridas</a>
+            <span>•</span>
+            <a href="index.html">Sair</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('localizacaoAtual').innerText = 'Rua dos Bobos, nº 0';
+
+        document.getElementById('verEstimativaBtn').addEventListener('click', function() {
+            if (document.getElementById('destino').value) {
+                document.getElementById('estimativas').style.display = 'block';
+            } else {
+                alert('Por favor, informe um destino.');
+            }
+        });
+
+        document.getElementById('chamarMototaxiBtn').addEventListener('click', function() {
+            alert('Procurando mototáxi... Você será notificado.');
+            window.location.href = 'rastreamento.html';
+        });
+
+        document.getElementById('cartaoForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const numCartao = document.getElementById('numCartao').value;
+            const validadeCartao = document.getElementById('validadeCartao').value;
+            const regexNum = /^\d{16}$/;
+            const regexVal = /^\d{2}\/\d{2}$/;
+            if (regexNum.test(numCartao) && regexVal.test(validadeCartao)) {
+                alert('Cartão salvo com sucesso (Tokenização simulada)!');
+            } else {
+                alert('Por favor, verifique o número do cartão e a validade (MM/AA).');
+            }
+        });
+    </script>
+</body>
+</html>
