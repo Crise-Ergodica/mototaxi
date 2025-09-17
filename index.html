@@ -95,10 +95,9 @@
     <div class="container">
         <h1>Mototáxi App</h1>
         <h2>Login</h2>
-        <form id="loginForm">
+        <form id="loginForm" action="home_passageiro.html" method="get">
             <input type="text" id="loginUsername" placeholder="Usuário/E-mail" required>
             <input type="password" id="loginPassword" placeholder="Senha" required>
-            <span class="error-message" id="loginError">Usuário ou senha incorretos.</span>
             <button type="submit">Entrar</button>
             <a href="#">Esqueci minha senha</a>
         </form>
@@ -108,21 +107,5 @@
         <button class="secondary-button" onclick="window.location.href='cadastro_passageiro.html'">Sou Passageiro</button>
         <button class="secondary-button" onclick="window.location.href='cadastro_mototaxista.html'">Sou Mototaxista</button>
     </div>
-
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const username = document.getElementById('loginUsername').value;
-            const password = document.getElementById('loginPassword').value;
-
-            // Altere a validação para que os campos levem para a próxima página com qualquer preenchimento.
-            // Apenas verifica se os campos não estão vazios.
-            if (username && password) {
-                window.location.href = 'home_passageiro.html';
-            } else {
-                document.getElementById('loginError').style.display = 'block';
-            }
-        });
-    </script>
 </body>
 </html>
