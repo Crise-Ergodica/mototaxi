@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliar Corrida</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #264653;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #6c757d;
+            margin-bottom: 20px;
+        }
+        .estrelas {
+            font-size: 2.5em;
+            color: #ffc107;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .estrelas span {
+            transition: color 0.3s ease;
+        }
+        .estrelas span:hover {
+            color: #ffdb58;
+        }
+        textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #d4d8de;
+            border-radius: 8px;
+            resize: none;
+            height: 100px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+        }
+        textarea:focus {
+            outline: none;
+            border-color: #2a9d8f;
+            box-shadow: 0 0 0 2px rgba(42, 157, 143, 0.2);
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            background-color: #f4a261;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        button:hover {
+            background-color: #e76f51;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Avalie sua corrida!</h1>
+        <p>Como foi seu mototaxista?</p>
+        <div class="estrelas">
+            <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+        </div>
+        <textarea placeholder="Deixe um comentário opcional..."></textarea>
+        <button onclick="alert('Avaliação enviada com sucesso!'); window.location.href='home_passageiro.html';">Enviar Avaliação</button>
+    </div>
+</body>
+</html>
