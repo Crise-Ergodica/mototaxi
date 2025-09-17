@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Mototaxista</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #264653;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        input {
+            width: calc(100% - 20px);
+            padding: 12px 10px;
+            margin-bottom: 15px;
+            border: 1px solid #d4d8de;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        input:focus {
+            outline: none;
+            border-color: #2a9d8f;
+            box-shadow: 0 0 0 2px rgba(42, 157, 143, 0.2);
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            background-color: #2a9d8f;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        button:hover {
+            background-color: #264653;
+            transform: translateY(-2px);
+        }
+        .aviso {
+            font-size: 14px;
+            color: #6c757d;
+            margin-top: 20px;
+        }
+        a {
+            color: #457b9d;
+            text-decoration: none;
+            font-size: 14px;
+            margin-top: 20px;
+            display: block;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro de Mototaxista</h1>
+        <form id="cadastroMototaxistaForm">
+            <input type="text" id="nome" placeholder="Nome Completo" required>
+            <input type="text" id="cnh" placeholder="Número da CNH" required>
+            <input type="text" id="veiculo" placeholder="Modelo do Veículo" required>
+            <input type="text" id="placa" placeholder="Placa do Veículo" required>
+            <input type="email" id="email" placeholder="E-mail" required>
+            <input type="password" id="senha" placeholder="Senha" required>
+            <button type="submit">Cadastrar</button>
+        </form>
+        <p class="aviso">Sua conta será ativada após a aprovação manual do administrador.</p>
+        <p><a href="index.html">Voltar para o Login</a></p>
+    </div>
+
+    <script>
+        document.getElementById('cadastroMototaxistaForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Seu cadastro foi enviado para análise. Aguarde a aprovação do administrador!');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
