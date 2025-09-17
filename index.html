@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Cadastro Mototáxi</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #264653;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        h2 {
+            color: #457b9d;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+        input {
+            width: calc(100% - 20px);
+            padding: 12px 10px;
+            margin-bottom: 15px;
+            border: 1px solid #d4d8de;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        input:focus {
+            outline: none;
+            border-color: #2a9d8f;
+            box-shadow: 0 0 0 2px rgba(42, 157, 143, 0.2);
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        #loginForm button {
+            background-color: #2a9d8f;
+        }
+        #loginForm button:hover {
+            background-color: #264653;
+            transform: translateY(-2px);
+        }
+        .secondary-button {
+            background-color: #e9c46a;
+        }
+        .secondary-button:hover {
+            background-color: #f4a261;
+            transform: translateY(-2px);
+        }
+        a {
+            color: #457b9d;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .error-message {
+            color: #e63946;
+            font-size: 14px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mototáxi App</h1>
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="text" id="loginUsername" placeholder="Usuário/E-mail" required>
+            <input type="password" id="loginPassword" placeholder="Senha" required>
+            <span class="error-message" id="loginError">Usuário ou senha incorretos.</span>
+            <button type="submit">Entrar</button>
+            <a href="#">Esqueci minha senha</a>
+        </form>
+        <hr style="border: 0; height: 1px; background-color: #d4d8de; margin: 30px 0;">
+        <h2>Cadastro</h2>
+        <p style="color: #6c757d; font-size: 14px;">Não tem conta? Cadastre-se como passageiro ou mototaxista.</p>
+        <button class="secondary-button" onclick="window.location.href='cadastro_passageiro.html'">Sou Passageiro</button>
+        <button class="secondary-button" onclick="window.location.href='cadastro_mototaxista.html'">Sou Mototaxista</button>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+            if (username === 'aurora@email.com' && password === 'larissa25') {
+                window.location.href = 'home_passageiro.html';
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
