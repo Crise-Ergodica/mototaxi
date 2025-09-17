@@ -114,7 +114,10 @@
             event.preventDefault();
             const username = document.getElementById('loginUsername').value;
             const password = document.getElementById('loginPassword').value;
-            if (username === 'admin' && password === 'admin') {
+
+            // Altere a validação para que os campos levem para a próxima página com qualquer preenchimento.
+            // Apenas verifica se os campos não estão vazios.
+            if (username && password) {
                 window.location.href = 'home_passageiro.html';
             } else {
                 document.getElementById('loginError').style.display = 'block';
